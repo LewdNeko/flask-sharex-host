@@ -1,9 +1,10 @@
 .file {
+  padding: 5px 5px 5px 5px;
   background-color: #333333;
   color: #ffffff;
   font-size: 30px;
   font-family: Arial;
-  height: 50px;
+  height: 40px;
   width: 90%;
   margin: 0 auto;
   border-width: 0px 0px 5px 0px;
