@@ -43,7 +43,7 @@ def page_main():
       except:
          return "Unknown Error"
       
-   files = [{"name": i, "size": round(os.path.getsize("/filehost/files/qwerty/"+i)} for i in os.listdir("/filehost/files/qwerty")/1024.0, 2)]
+   files = [{"name": i, "size": round(os.path.getsize("/filehost/files/qwerty/"+i)/1024.0, 2)} for i in os.listdir("/filehost/files/qwerty")]
    return render_template("mainpage.html", files=files)
                   
 
