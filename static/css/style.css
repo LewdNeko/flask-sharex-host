@@ -2,6 +2,10 @@ body {
   background-color: #000000;
 }
 
+a {
+ color: #ffffff; 
+}
+
 .file {
   padding: 5px 5px 5px 5px;
   background-color: #333333;
