@@ -1,1 +1,3 @@
-<body>Template One</body>
+{% for file in files %}
+<div class="file"><span class="filename">{{ file.name }}</span><span class="filesize">{{ file.size }}</span></div>
+{% endfor %}
