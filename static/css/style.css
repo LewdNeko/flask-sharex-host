@@ -6,6 +6,9 @@
   height: 50px;
   width: 90%;
   margin: 0 auto;
+  border-width: 0px 0px 5px 0px;
+  border-color: #00aa33;
+  border-style: solid;
 }
 
 .filesize {
