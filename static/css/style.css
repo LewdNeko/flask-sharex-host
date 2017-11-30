@@ -1,5 +1,5 @@
 .file {
-  background-color: #bbbbbb;
+  background-color: #333333;
   color: #ffffff;
   font-size: 30px;
   font-family: Arial;
@@ -7,7 +7,7 @@
   width: 90%;
   margin: 0 auto;
   border-width: 0px 0px 5px 0px;
-  border-color: #00aa33;
+  border-color: #007722;
   border-style: solid;
 }
 
