@@ -41,10 +41,12 @@ def page_main():
          else:
             return "You didn't provide a username"
       except:
-         files = [{"name": i, "size": os.path.getsize("/filehost/files/qwerty"+i)} for i in os.listdir("/filehost/files/qwerty")]
-         return render_template("mainpage.html", files=files)
+         return "Unknown Error"
+      
+   files = [{"name": i, "size": os.path.getsize("/filehost/files/qwerty"+i)} for i in os.listdir("/filehost/files/qwerty")]
+   return render_template("mainpage.html", files=files)
                   
-   return "what do youuu want"
+
 
 
 @app.route('/<string:username>/<string:fileid>')
