@@ -6,7 +6,7 @@ import os
 
 
 app = Flask(__name__)
-
+app.config['SECRET_KEY'] = "qhjkzmalqertzmalqpdfgmal"
 def file_name():
    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(20))
 
