@@ -42,8 +42,8 @@ def page_main():
             return "You didn't provide a username"
       except:
          return "Unknown Error"
-      
-   files = [{"name": i, "size": round(os.path.getsize("/filehost/files/qwerty/"+i)/1024.0, 2)} for i in os.listdir("/filehost/files/qwerty")]
+   session["username"] = "qwerty"
+   files = [{"name": i, "size": round(os.path.getsize("/filehost/files/"+session["username"]+"/"+i)/1024.0, 2)} for i in os.listdir("/filehost/files/qwerty")]
    return render_template("mainpage.html", files=files)
                   
 
