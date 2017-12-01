@@ -1,4 +1,21 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+  function copyToClipboard(textz) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val(textz).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+</script>
+
+
 <link href="../static/css/style.css" rel="stylesheet">
 {% for file in files %}
 <div class="file"><a href="/{{ session.username }}/{{ file.name }}"><span class="filename">{{ file.name }}</span></a><span class="filesize">{{ file.size }}KB</span></div>
+<div class="buttons">
+  <button class="button">Delete</button>
+  <button onClick="copyToClipboard('http://stop-storing-your-config-in-ya.ml/{{ session.username }}/{{ file.name }}');" class="button">Copy URL</button>
+</div>
 {% endfor %}
