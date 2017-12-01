@@ -28,8 +28,12 @@ def page_main():
             if "filedir" in data:
                try:
                   os.remove(data.filedir)
-               except:
-                  pass
+               except Exception as E:
+                  return str(E)
+            else:
+               return "2"
+         else:
+            return "1"
       
       try:
          if "username" in data:
