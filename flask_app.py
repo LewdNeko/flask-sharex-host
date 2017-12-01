@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, session, request, send_file
+from flask import Flask, render_template, redirect, session, request, send_file, flash
 import json
 import string
 import random
@@ -28,39 +28,39 @@ def page_main():
             if "filedir" in data:
                try:
                   os.remove(data["filedir"])
-               except Exception as E:
-                  return str(E)
-            else:
-               return "2"
-         else:
-            return "1"
+                  flash("File Deleted!")
+               except:
+                  pass
       
-      try:
-         if "username" in data:
-            if data["username"] in users:
-               if "key" in data:
-                  if data["key"] == users[data["username"]]:
-                     if not os.path.exists("./files/"+data["username"]):
-                        os.makedirs("./files/"+data["username"])
-                     if sum([sum(map(lambda fname: os.path.getsize(os.path.join(directory, fname)), files)) for directory, folders, files in os.walk("/filehost/files/" + data["username"] )]) / (1024*1024.0) < 500:
-                        name = file_name()
-                        upfile = request.files
-                        filename, extension = os.path.splitext(upfile["file"].filename)
-                        upfile["file"].save("/filehost/files/"+data["username"]+"/"+ name+extension)
-                        return "http://stop-storing-your-config-in-ya.ml/"+data["username"]+"/"+name+extension
+      else:
+      
+         try:
+            if "username" in data:
+               if data["username"] in users:
+                  if "key" in data:
+                     if data["key"] == users[data["username"]]:
+                        if not os.path.exists("./files/"+data["username"]):
+                           os.makedirs("./files/"+data["username"])
+                        if sum([sum(map(lambda fname: os.path.getsize(os.path.join(directory, fname)), files)) for directory, folders, files in os.walk("/filehost/files/" + data["username"] )]) / (1024*1024.0) < 500:
+                           name = file_name()
+                           upfile = request.files
+                           filename, extension = os.path.splitext(upfile["file"].filename)
+                           upfile["file"].save("/filehost/files/"+data["username"]+"/"+ name+extension)
+                           return "http://stop-storing-your-config-in-ya.ml/"+data["username"]+"/"+name+extension
 
+                        else:
+                           return "You're out of space"
                      else:
-                        return "You're out of space"
+                        return "Your key is incorrect"
                   else:
-                     return "Your key is incorrect"
+                     return "You didn't provide a key"
                else:
-                  return "You didn't provide a key"
+                  return "You don't have an account"
             else:
-               return "You don't have an account"
-         else:
-            return "You didn't provide a username"
-      except:
-         return "Unknown Error"
+               return "You didn't provide a username"
+         except:
+            return "Unknown Error"
+         
    session["username"] = "qwerty"
    files = [{"name": i, "size": round(os.path.getsize("/filehost/files/"+session["username"]+"/"+i)/1024.0, 2)} for i in os.listdir("/filehost/files/qwerty")]
    return render_template("mainpage.html", files=files, form=delform)
