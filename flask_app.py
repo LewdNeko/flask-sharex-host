@@ -63,7 +63,7 @@ def page_main():
          
    session["username"] = "qwerty"
    files = [{"name": i, "size": round(os.path.getsize("/filehost/files/"+session["username"]+"/"+i)/1024.0, 2)} for i in os.listdir("/filehost/files/qwerty")]
-   return render_template("mainpage.html", files=files, form=delform, spaceused=sum([sum(map(lambda fname: os.path.getsize(os.path.join(directory, fname)), files)) for directory, folders, files in os.walk("/filehost/files/" + session["username"] )])/(1024*1024.0))
+   return render_template("mainpage.html", files=files, form=delform, spaceused=round(sum([sum(map(lambda fname: os.path.getsize(os.path.join(directory, fname)), files)) for directory, folders, files in os.walk("/filehost/files/" + session["username"] )])/(1024*1024.0), 2))
                   
 
 
