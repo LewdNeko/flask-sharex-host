@@ -17,6 +17,7 @@ class DeleteForm(FlaskForm):
 
 @app.route('/', methods = ['GET', 'POST'])
 def page_main():
+   delform = DeleteForm(request.form)
    if request.method == 'POST':
       users = json.loads(open("users.json", "r").read())
       data = request.form
@@ -57,7 +58,7 @@ def page_main():
          return "Unknown Error"
    session["username"] = "qwerty"
    files = [{"name": i, "size": round(os.path.getsize("/filehost/files/"+session["username"]+"/"+i)/1024.0, 2)} for i in os.listdir("/filehost/files/qwerty")]
-   return render_template("mainpage.html", files=files)
+   return render_template("mainpage.html", files=files, form=delform)
                   
 
 
