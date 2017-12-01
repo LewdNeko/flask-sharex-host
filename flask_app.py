@@ -27,7 +27,7 @@ def page_main():
          if data["deletefile"]:
             if "filedir" in data:
                try:
-                  os.remove(data.filedir)
+                  os.remove(data["filedir"])
                except Exception as E:
                   return str(E)
             else:
