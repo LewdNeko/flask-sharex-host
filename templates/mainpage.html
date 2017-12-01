@@ -15,7 +15,7 @@
 {% for file in files %}
 <div class="file"><a href="/{{ session.username }}/{{ file.name }}"><span class="filename">{{ file.name }}</span></a><span class="filesize">{{ file.size }}KB</span></div>
 <div class="buttons">
-  <button class="button">Delete</button>
+  <form method="post">{{ form.deletefile }}</form>
   <button onClick="copyToClipboard('http://stop-storing-your-config-in-ya.ml/{{ session.username }}/{{ file.name }}');" class="button">Copy URL</button>
 </div>
 {% endfor %}
