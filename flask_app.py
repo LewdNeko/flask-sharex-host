@@ -4,6 +4,7 @@ import string
 import random
 import os
 from wtforms import *
+from flask_wtf import FlaskForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "qhjkzmalqertzmalqpdfgmal"
