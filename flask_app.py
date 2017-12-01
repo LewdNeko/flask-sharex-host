@@ -24,7 +24,7 @@ def page_main():
       data = request.form
       
       if "deletefile" in data:
-         if data.deletefile:
+         if data["deletefile"]:
             if "filedir" in data:
                try:
                   os.remove(data.filedir)
