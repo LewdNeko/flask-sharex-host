@@ -3,7 +3,7 @@ import json
 import string
 import random
 import os
-
+from wtforms import *
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "qhjkzmalqertzmalqpdfgmal"
@@ -11,11 +11,24 @@ def file_name():
    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(20))
 
 
+class DeleteForm(FlaskForm):
+    filedir = HiddenField("fildir")
+    deletefile = SubmitField("Delete")
+
 @app.route('/', methods = ['GET', 'POST'])
 def page_main():
    if request.method == 'POST':
       users = json.loads(open("users.json", "r").read())
       data = request.form
+      
+      if "deletefile" in data:
+         if data.deletefile:
+            if "filedir" in data:
+               try:
+                  os.remove(data.filedir)
+               except:
+                  pass
+      
       try:
          if "username" in data:
             if data["username"] in users:
