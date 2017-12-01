@@ -53,6 +53,7 @@ label {
 }
 
 .button {
+  display: inline-block;
   background-color: #000000;
   border: 0;
   color: #ffffff;
