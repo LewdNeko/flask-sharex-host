@@ -65,8 +65,9 @@ label {
 
 }
 
-form {
+.deleteform {
   display: inline-block;
+  float: right;
 }
 
 
