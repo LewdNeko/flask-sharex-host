@@ -17,6 +17,6 @@
 <div class="file"><a href="/{{ session.username }}/{{ file.name }}"><span class="filename">{{ file.name }}</span></a><span class="filesize">{{ file.size }}KB</span></div>
 <div class="buttons">
   <form method="post">{{ form.deletefile(class_="button") }}{{ form.filedir(value="/filehost/files/"+session.username+"/"+file.name)}}</form>
-  <form><button onClick="copyToClipboard('http://stop-storing-your-config-in-ya.ml/{{ session.username }}/{{ file.name }}');" class="button">Copy URL</button></form>
+  <button onClick="copyToClipboard('http://stop-storing-your-config-in-ya.ml/{{ session.username }}/{{ file.name }}');" class="button">Copy URL</button>
 </div>
 {% endfor %}
