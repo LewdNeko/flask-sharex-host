@@ -61,7 +61,8 @@ label {
   font-weight: bold;
   float: right;
   transition: background-color 0.2s;
-  margin-left: 5px;
+  margin: 0px 5px 0px 0px;
+
 }
 
 .button:hover {
