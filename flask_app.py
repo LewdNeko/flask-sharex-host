@@ -1,13 +1,20 @@
-from flask import Flask, render_template, redirect, session, request, send_file, flash
 import json
-import string
-import random
 import os
-from wtforms import *
+import random
+import string
+
+from flask import flash, Flask, redirect, render_template, request, send_file, session
 from flask_wtf import FlaskForm
+from wtforms import *
+
+# Call this to generate a secure key.
+def gen_secure():
+	s = os.urandom(16)
+	return s
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "qhjkzmalqertzmalqpdfgmal"
+app.config['SECRET_KEY'] = "qhjkzmalqertzmalqpdfgmal"  # Don't use this in a production env...
+app.config['DEBUG'] = True
 def file_name():
 	return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(20))
 
@@ -69,4 +76,4 @@ def page_set(username, fileid):
 	return send_file("/filehost/files/"+username+"/"+fileid)
 
 if __name__ == '__main__':
-	app.run(debug = True, host="0.0.0.0", port=80)
+	app.run(host="0.0.0.0", port=80)
